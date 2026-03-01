@@ -6,12 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "import-dreams": "npx tsx scripts/import-dreams.ts"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.98.0",
+    "fast-xml-parser": "^5.4.1",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"

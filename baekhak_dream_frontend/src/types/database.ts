@@ -14,6 +14,38 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      dream_sentences: {
+        Row: {
+          id: string;
+          source: string;
+          title: string | null;
+          writer: string | null;
+          post: string;
+          round_num: number | null;
+          post_date: string | null;
+          created_at: string | null;
+        };
+        Insert: {
+          id?: string;
+          source: string;
+          title?: string | null;
+          writer?: string | null;
+          post: string;
+          round_num?: number | null;
+          post_date?: string | null;
+          created_at?: string | null;
+        };
+        Update: {
+          id?: string;
+          source?: string;
+          title?: string | null;
+          writer?: string | null;
+          post?: string;
+          round_num?: number | null;
+          post_date?: string | null;
+          created_at?: string | null;
+        };
+      };
       dream_keywords: {
         Row: {
           id: string;
