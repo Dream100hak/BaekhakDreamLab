@@ -41,7 +41,7 @@ export async function GET() {
         return NextResponse.json({ error: error.message }, { status: 500 });
       }
       if (!chunk?.length) break;
-      for (const r of chunk) {
+      for (const r of chunk as { word: string; sense: string | null }[]) {
         inDbSet.add(`${r.word}|${r.sense ?? ""}`);
       }
       hasMore = chunk.length === PAGE;

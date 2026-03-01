@@ -35,7 +35,7 @@ export default function DreamListPage() {
   const [editSense, setEditSense] = useState("");
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
   const handleSeed = async () => {
     setSeeding(true);

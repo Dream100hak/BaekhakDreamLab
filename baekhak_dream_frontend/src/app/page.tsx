@@ -24,6 +24,12 @@ export default function Home() {
         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row sm:flex-wrap sm:gap-3">
           <Link
             className="flex h-12 w-full items-center justify-center rounded-full bg-zinc-900 px-5 text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 md:w-[200px]"
+            href="/dream/analyze"
+          >
+            꿈 문장 분석
+          </Link>
+          <Link
+            className="flex h-12 w-full items-center justify-center rounded-full border border-zinc-300 px-5 text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-600 dark:text-zinc-300 dark:hover:bg-zinc-700 md:w-[200px]"
             href="/dream/list"
           >
             꿈 해몽 사전 (사전식)

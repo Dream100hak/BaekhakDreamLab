@@ -61,10 +61,16 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ success: true, message: "변경 없음" });
     }
 
-    const { error: updateError } = await supabase
-      .from("dream_keywords")
+    const rowId = (rows[0] as { id: string }).id;
+    const { error: updateError } = await (
+      supabase.from("dream_keywords") as unknown as {
+        update: (u: { word?: string; sense?: string | null }) => {
+          eq: (col: string, val: string) => Promise<{ error: { message: string } | null }>;
+        };
+      }
+    )
       .update(updates)
-      .eq("id", rows[0].id);
+      .eq("id", rowId);
 
     if (updateError) {
       return NextResponse.json(
@@ -115,10 +121,11 @@ export async function DELETE(req: NextRequest) {
       );
     }
 
+    const deleteRowId = (rows[0] as { id: string }).id;
     const { error: deleteError } = await supabase
       .from("dream_keywords")
       .delete()
-      .eq("id", rows[0].id);
+      .eq("id", deleteRowId);
 
     if (deleteError) {
       return NextResponse.json(

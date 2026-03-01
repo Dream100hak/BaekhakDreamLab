@@ -80,6 +80,29 @@ export const lookupKeywordFromSupabase = async (
   };
 };
 
+/** sense가 있는 동음이의어 조회: word -> [sense1, sense2, ...] */
+export const fetchHomonymsFromSupabase = async (): Promise<Record<string, string[]>> => {
+  const supabase = createServerClient();
+  const { data, error } = await supabase
+    .from("dream_keywords")
+    .select("word, sense");
+
+  if (error) {
+    console.error("[dictionary-supabase] fetchHomonyms error:", error);
+    return {};
+  }
+
+  const rows = (data ?? []) as { word: string; sense: string | null }[];
+  const map: Record<string, string[]> = {};
+  for (const r of rows) {
+    const sense = (r.sense ?? "").trim();
+    if (!sense) continue;
+    if (!map[r.word]) map[r.word] = [];
+    if (!map[r.word].includes(sense)) map[r.word].push(sense);
+  }
+  return map;
+};
+
 /** 여러 키워드 조회 */
 export const lookupKeywordsFromSupabase = async (
   keywords: string[]
